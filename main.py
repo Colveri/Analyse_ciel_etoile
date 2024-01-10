@@ -130,7 +130,7 @@ def download_image():
 
 
 def show_about():
-    messagebox.showinfo('A propos', 'Analyse d\'image de ciel étoilé\n\nLa valeur de tolérance par défaut est de 60 %\n\nProgramme fait par Coleen - TG08.\n')
+    messagebox.showinfo('A propos', "Analyse d\'image de ciel étoilé\n\nLa valeur de tolérance par défaut est de 60 %\nSi une étoile a comme couleur 1,1,1, c'est qu'elle est trop petite.\n\nProgramme fait par Coleen - TG08.\n")
 
 
 def show_help():
@@ -204,4 +204,5 @@ console.pack()
 console.insert(tk.END, "C'est ici que vous trouverez les informations sur l'image analysée.\nBonne utilisation.\n")
 
 
+### Mainloop ###
 root.mainloop()
