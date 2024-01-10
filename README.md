@@ -9,3 +9,10 @@ Il comprend, pour sa version 1:
 - La possibilité de sauvegarder l'image analysée
   Celle ci est assignée à un numéro, le même que l'affichage à côté de RGB.
 - Un accès direct à la page GitHub.
+
+## Comment executer le programme ?
+
+Il est compris dans le projet, un fichier .bat qui, une fois executé, lancera le programme.
+
+
+Pour tout problème, n'hésitez pas à me le faire remonter.
