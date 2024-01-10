@@ -10,6 +10,11 @@ Le but est d'analyser une image de ciel étoilée et de permettre de connaitre l
   Celle ci est assignée à un numéro, le même que l'affichage à côté de RGB.
 - Un accès direct à la page GitHub.
 
+## Comment télécharger ?
+
+Pour télécharger, cliquez sur l'onglet "<> Code" et selectionnez "Download ZIP". Une fois le téléchargement effectué,
+veuillez à bien extraire les fichiers à l'interieur ou vous le souhaitez.
+
 ## Comment éxécuter le programme ?
 
 Il est compris dans le projet, un fichier .bat qui, une fois executé, lancera le programme.
