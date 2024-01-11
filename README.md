@@ -1,7 +1,7 @@
 # Analyse de ciel étoilé
 
-Bienvenue. Ce progamme est une demande que m'a faite un de mes professeurs passionné d'astronomie.
-Le but est d'analyser une image de ciel étoilée et de permettre de connaitre leur couleur ainsi que leur emplacement.
+Bienvenue. Ce progamme est une demande que m'a faite un de mes professeurs.
+Le but est d'analyser une image de ciel étoilée et de permettre de connaitre la couleur, l'emplacement et le nombre d'étoile présentes sur l'image.
 
 ## Que comprend la 1.0 :
 
@@ -9,6 +9,10 @@ Le but est d'analyser une image de ciel étoilée et de permettre de connaitre l
 - La possibilité de sauvegarder l'image analysée
   Vous y verrez vos étoiles, assignées à un numéro, le même que l'affichage à côté de RVB dans la console.
 - Un accès direct à la page GitHub.
+
+## Qu'est ce qui est prévu pour la 1.1 ?
+- Une amélioration d'analyse pour les petites étoiles (souvent pas détectés par le programme).
+- A suivre...
 
 ## Comment télécharger ?
 
