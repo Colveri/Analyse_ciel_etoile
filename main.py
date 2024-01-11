@@ -22,6 +22,7 @@ seuilLst= [100,99,98,97,96,95,94,93,92,91,90,
            29,28,27,26,25,24,23,22,21,20,
            19,18,17,16,15,14,13,12,11,10,
                           9,8,7,6,5,4,3,2,1,0]
+#Comme la tolérance est inversée, on fait artificiellement pour inverser la valeur.
 tolerance = seuilLst[100-60]
 
 
@@ -109,6 +110,7 @@ def analyze_image():
 
         cv2.drawContours(img, [contour], -1, (0, 255, 0), 2)
         cv2.putText(img, str(i+1), (cX - 20, cY - 20), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 2)
+# Dessine le contour de l'étoile sur l'image modifiée et écrit son indice (à revoir car si hors cadre, la valeur n'est pas correctement visible)
 
         # Convertir BGR à RGB
         moy_color_rgb = moy_color_bgr[::-1]
@@ -128,7 +130,7 @@ def download_image():
     img_pil.save(os.path.splitext(file_path)[0] + '_analysé.png')
     console.insert(tk.END, "Image analysée téléchargée.\n")
 
-
+# Suivant : deux fonctions pour ouvrir un message dans la catégorie des aides.
 def show_about():
     messagebox.showinfo('A propos', "Analyse d\'image de ciel étoilé\n\nLa valeur de tolérance par défaut est de 60 %\nSi une étoile a comme couleur 1,1,1, c'est qu'elle est trop petite.\n\nProgramme fait par Coleen - TG08.\n")
 
@@ -142,18 +144,18 @@ def memorize_tolerance():
     tolerance_value = tolerance_scale.get()
     print(f"La valeur de la tolérance {tolerance_value} a été mise en mémoire.")
     tolerance_value = seuilLst[tolerance_value] # vu que la tolérance est inversée,
-                                                # on fait comme on peut...
+                                                # on fait comme on peut... (comme dit à l'initialisation de la lst)
     print(f"La vraie valeur de la tolérance {tolerance_scale.get()} a été mise en mémoire.")
     # Plus c'est haut, plus la sensibilité est grande
     # Plus c'est bas, plus la sensibilité est petite
-    # Car avant, 100% de tolérance = 0% de sensibilité à la couleur
-    # Et maintenant, 100% de tolérance = 100% de sensibilité à la couleur
+    # Car avant, 75% de tolérance = 25% de sensibilité à la couleur
+    # Et maintenant, 75% de tolérance = 75% de sensibilité à la couleur
 
 def link_To_GitHub():
     if messagebox.askyesno('Mise à jour', 'Voulez-vous être redirigé vers la page GitHub du programme?'):
         webbrowser.open("https://github.com/Colveri/Analyse_ciel_etoile")
     else:
-        messagebox.showinfo('Mise à jour', "Vous pouvez retrouver le programme sur GitHub: https://github.com/Colveri/Analyse_ciel_etoile") # Je sais pas si c'est utile mais bon
+        messagebox.showinfo('Mise à jour', "Vous pouvez retrouver le programme sur GitHub: https://github.com/Colveri/Analyse_ciel_etoile") # Si cliqué non, affiche tout de même le lien sans ouvrir de navigateur.
 
 ### Interface ###
 
@@ -190,7 +192,7 @@ root.config(menu=menubar)
 tolerance_label = tk.Label(root, text="Tolérance :")
 tolerance_label.pack()
 tolerance_scale = tk.Scale(root, from_=0, to=100, orient=tk.HORIZONTAL)
-tolerance_scale.set(60)  # Valeur par défaut
+tolerance_scale.set(60)  # Valeur par défaut, d'après mes tests, c'est dans la majorité des cas une très bonne valeur.
 tolerance_scale.pack()
 
 # Bouton pour mettre en mémoire la valeur de la tolérance
