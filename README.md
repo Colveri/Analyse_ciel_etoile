@@ -5,9 +5,9 @@ Le but est d'analyser une image de ciel étoilée et de permettre de connaitre l
 
 ## Que comprend la 1.0 :
 
-- La console affiche la couleur RGB d'une étoile numéroté
+- La console affiche la couleur RVB d'une étoile numéroté
 - La possibilité de sauvegarder l'image analysée
-  Vous y verrez vos étoiles, assignées à un numéro, le même que l'affichage à côté de RGB. (Bug si étoile en haut de l'image, le chiffre est hors cadre de l'image et ne sera pas visible. Le problème sera réglé dans les plus brefs délais).
+  Vous y verrez vos étoiles, assignées à un numéro, le même que l'affichage à côté de RVB dans la console.(⚠️: Bug si l'étoile est en haut de l'image, le chiffre est hors du cadre de l'image et ne sera pas visible. Le problème sera réglé dans les plus brefs délais).
 - Un accès direct à la page GitHub.
 
 ## Comment télécharger ?
