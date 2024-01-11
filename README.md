@@ -21,3 +21,7 @@ Il est compris dans le projet, un fichier .bat qui, une fois executé, lancera l
 
 
 Pour tout problème, n'hésitez pas à me le faire remonter.
+
+## Problèmes récurrents
+
+- Le .bat ne lance pas le programme : https://github.com/Colveri/Analyse_ciel_etoile/issues/1
