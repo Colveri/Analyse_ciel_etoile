@@ -21,8 +21,8 @@ seuilLst= [100,99,98,97,96,95,94,93,92,91,90,
            39,38,37,36,35,34,33,32,31,30,
            29,28,27,26,25,24,23,22,21,20,
            19,18,17,16,15,14,13,12,11,10,
-                          9,8,7,6,5,4,3,2,1,0]
-#Comme la tolérance est inversée, on fait artificiellement pour inverser la valeur.
+           9,8,7,6,5,4,3,2,1,0]
+           #Comme la tolérance est inversée, on fait artificiellement pour inverser la valeur.
 tolerance = seuilLst[100-60]
 
 
@@ -50,14 +50,14 @@ if int(str(sys.version_info[0]) + str(sys.version_info[1])) <= 311:
 ### Fonctions de l'interface ###
 
 
-
+# Sélection de l'image
 def select_image():
     global img, file_path, tolerance
     file_path = filedialog.askopenfilename()
     img = cv2.imread(file_path, cv2.IMREAD_COLOR)
     analyze_image()
 
-
+# PIL fonctionne en niveau de gris alors conversion par cv2 en niveau de gris
 def analyze_image():
     global img, file_path
     # Convertir l'image en niveaux de gris
@@ -76,12 +76,13 @@ def analyze_image():
     # Trouver les contours dans le masque
     contours, _ = cv2.findContours(mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
 
+    # Affiche le nombre d'étoiles dans la console
     console.insert(tk.END, f'Nombre d\'étoiles: {len(contours)}\n')
 
     # Parcourir tous les contours
     for i, contour in enumerate(contours):
         # Calculer le moment du contour
-        M = cv2.moments(contour)
+        M = cv2.moments(contour) # moments : OpenCV
 
         # Calculer le centre de masse du contour
         if M["m00"] != 0:
@@ -108,9 +109,9 @@ def analyze_image():
             cY = int(M["m01"] / M["m00"])
             moy_color_bgr = img[cY, cX]
 
-        cv2.drawContours(img, [contour], -1, (0, 255, 0), 2)
-        cv2.putText(img, str(i+1), (cX - 20, cY - 20), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 2)
-# Dessine le contour de l'étoile sur l'image modifiée et écrit son indice (à revoir car si hors cadre, la valeur n'est pas correctement visible)
+        cv2.drawContours(img, [contour], -1, (0, 255, 0), 3)
+        cv2.putText(img, str(i+1), (cX - 20, cY + 30), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 2)
+        # Dessine le contour de l'étoile sur l'image modifiée et écrit son indice (à revoir car si hors cadre, la valeur n'est pas correctement visible)
 
         # Convertir BGR à RGB
         moy_color_rgb = moy_color_bgr[::-1]
@@ -132,7 +133,7 @@ def download_image():
 
 # Suivant : deux fonctions pour ouvrir un message dans la catégorie des aides.
 def show_about():
-    messagebox.showinfo('A propos', "Analyse d\'image de ciel étoilé\n\nLa valeur de tolérance par défaut est de 60 %\nSi une étoile a comme couleur 1,1,1, c'est qu'elle est trop petite.\n\nProgramme fait par Coleen - TG08.\n")
+    messagebox.showinfo('A propos', "Analyse d\'image de ciel étoilé\n\nLa valeur de tolérance par défaut est de 60 %\nSi une étoile a comme couleur 1,1,1, c'est qu'elle est trop petite.\n\nV1.0\n\nProgramme fait par Coleen - TG08.\n")
 
 
 def show_help():
