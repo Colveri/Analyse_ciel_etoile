@@ -5,9 +5,9 @@ import os
 import tkinter as tk
 from tkinter import filedialog, messagebox, Text, Button
 from PIL import Image, ImageTk
-import cv2
 import numpy as np
 import webbrowser
+import cv2
 
 
 ### Variables globales ###
@@ -52,6 +52,7 @@ if int(str(sys.version_info[0]) + str(sys.version_info[1])) <= 311:
 
 # Sélection de l'image
 def select_image():
+    """Ouvre une fenêtre du gestionnaire de fichiers pour sélectionner une image."""
     global img, file_path, tolerance
     file_path = filedialog.askopenfilename()
     img = cv2.imread(file_path, cv2.IMREAD_COLOR)
@@ -59,6 +60,7 @@ def select_image():
 
 # PIL fonctionne en niveau de gris alors conversion par cv2 en niveau de gris
 def analyze_image():
+    """Fonction qui analyse l'image à l'aide de cv2 et affiche le nombre d'étoiles dans la console."""
     global img, file_path
     # Convertir l'image en niveaux de gris
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
@@ -124,6 +126,7 @@ def analyze_image():
 
 
 def download_image():
+    """Permet de télécharger l'image analysée dans le même répertoire que l'image d'origine."""
     global img, file_path
     # Convertir l'image numpy.ndarray en une image PIL
     img_pil = Image.fromarray(img)
@@ -133,15 +136,18 @@ def download_image():
 
 # Suivant : deux fonctions pour ouvrir un message dans la catégorie des aides.
 def show_about():
-    messagebox.showinfo('A propos', "Analyse d\'image de ciel étoilé\n\nLa valeur de tolérance par défaut est de 60 %\nSi une étoile a comme couleur 1,1,1, c'est qu'elle est trop petite.\n\nV1.0\n\nProgramme fait par Coleen - TG08.\n")
+    """Affiche une fenêtre d'information sur le programme."""
+    messagebox.showinfo('A propos', "Analyse d\'image de ciel étoilé\n\nLa valeur de tolérance par défaut est de 60 %\nSi une étoile a comme couleur 1,1,1, c'est qu'elle est trop petite.\n\nProgramme fait par Coleen - TG08.\n")
 
 
 def show_help():
+    """Affiche une fenêtre d'information sur comment utiliser le programme."""
     messagebox.showinfo('Comment utiliser', "Veuillez selectionner une tolérance avant de séléctionner l'image.\nLa valeur est prise en compte une fois l'image selectionnée.\nVous trouverez l'image analysée dans le même répertoire que l'image d'origine.\nSi l'analyse manque des étoiles, veuillez revoir la tolérance et reselectionner l'image originale.")
 
 
 # Fonction pour mettre en mémoire la valeur de la tolérance
 def memorize_tolerance():
+    """Met en mémoire la valeur de la tolérance."""
     tolerance_value = tolerance_scale.get()
     print(f"La valeur de la tolérance {tolerance_value} a été mise en mémoire.")
     tolerance_value = seuilLst[tolerance_value] # vu que la tolérance est inversée,
@@ -153,6 +159,7 @@ def memorize_tolerance():
     # Et maintenant, 75% de tolérance = 75% de sensibilité à la couleur
 
 def link_To_GitHub():
+    """Redirige vers la page GitHub du programme."""
     if messagebox.askyesno('Mise à jour', 'Voulez-vous être redirigé vers la page GitHub du programme?'):
         webbrowser.open("https://github.com/Colveri/Analyse_ciel_etoile")
     else:
